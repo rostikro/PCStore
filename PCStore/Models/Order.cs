@@ -19,7 +19,7 @@ public partial class Order
 
     public virtual ICollection<ShippingInfo> ShippingInfos { get; set; } = new List<ShippingInfo>();
 
-    public virtual OrderStatus Status { get; set; } = null!;
+    public virtual OrderStatus? Status { get; set; }
 
-    public virtual User User { get; set; } = null!;
+    public virtual User? User { get; set; }
 }

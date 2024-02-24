@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using PCStore.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<PCStoreDBContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString(nameof(PCStoreDBContext)),
+        Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql")));
 
 var app = builder.Build();
 

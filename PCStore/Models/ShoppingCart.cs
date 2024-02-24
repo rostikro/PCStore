@@ -11,5 +11,5 @@ public partial class ShoppingCart
 
     public virtual ICollection<ShoppingCartProduct> ShoppingCartProducts { get; set; } = new List<ShoppingCartProduct>();
 
-    public virtual User User { get; set; } = null!;
+    public virtual User? User { get; set; }
 }

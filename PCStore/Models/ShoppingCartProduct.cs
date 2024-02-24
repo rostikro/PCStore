@@ -13,7 +13,7 @@ public partial class ShoppingCartProduct
 
     public int Quantity { get; set; }
 
-    public virtual ShoppingCart Cart { get; set; } = null!;
+    public virtual ShoppingCart? Cart { get; set; }
 
-    public virtual Product Prodcut { get; set; } = null!;
+    public virtual Product? Prodcut { get; set; }
 }

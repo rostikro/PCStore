@@ -13,7 +13,7 @@ public partial class SpecsOption
 
     public string Value { get; set; } = null!;
 
-    public virtual Product Product { get; set; } = null!;
+    public virtual Product? Product { get; set; }
 
-    public virtual Spec Spec { get; set; } = null!;
+    public virtual Spec? Spec { get; set; }
 }

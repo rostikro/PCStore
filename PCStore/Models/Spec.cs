@@ -11,7 +11,7 @@ public partial class Spec
 
     public string Name { get; set; } = null!;
 
-    public virtual ProductCategory Category { get; set; } = null!;
+    public virtual ProductCategory? Category { get; set; }
 
     public virtual ICollection<SpecsOption> SpecsOptions { get; set; } = new List<SpecsOption>();
 }

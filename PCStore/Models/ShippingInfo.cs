@@ -21,5 +21,5 @@ public partial class ShippingInfo
 
     public string Country { get; set; } = null!;
 
-    public virtual Order Order { get; set; } = null!;
+    public virtual Order? Order { get; set; }
 }
