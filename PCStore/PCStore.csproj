@@ -37,6 +37,68 @@
       <_ContentIncludedByDefault Remove="Views\Products\Details.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Products\Edit.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Products\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Addresses\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Addresses\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Addresses\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Addresses\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Addresses\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Categories\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Categories\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Categories\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Categories\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Categories\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\OrderProducts\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\OrderProducts\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\OrderProducts\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\OrderProducts\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\OrderProducts\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Orders\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Orders\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Orders\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Orders\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Orders\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ProductImages\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ProductImages\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ProductImages\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ProductImages\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ProductImages\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCartProducts\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCartProducts\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCartProducts\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCartProducts\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCartProducts\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCarts\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCarts\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCarts\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCarts\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ShoppingCarts\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\SpecOptions\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\SpecOptions\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\SpecOptions\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\SpecOptions\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\SpecOptions\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Specs\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Specs\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Specs\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Specs\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Specs\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Users\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Users\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Users\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Users\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Users\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminPanel\Categories.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminPanel\CreateCategory.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminPanel\CreateProduct.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminPanel\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminPanel\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminPanel\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminPanel\Products.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\C\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\C\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\C\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\C\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\C\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -50,6 +112,15 @@
       <UpToDateCheckInput Remove="Views\Products\Details.cshtml" />
       <UpToDateCheckInput Remove="Views\Products\Edit.cshtml" />
       <UpToDateCheckInput Remove="Views\Products\Index.cshtml" />
+      <UpToDateCheckInput Remove="Views\Products\Create.cshtml" />
+      <UpToDateCheckInput Remove="Views\Products\Delete.cshtml" />
+      <UpToDateCheckInput Remove="Views\Products\Details.cshtml" />
+      <UpToDateCheckInput Remove="Views\Products\Edit.cshtml" />
+      <UpToDateCheckInput Remove="Views\Products\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\js\select-img.js" />
     </ItemGroup>
 
 </Project>

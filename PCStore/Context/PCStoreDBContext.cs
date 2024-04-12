@@ -124,7 +124,7 @@ public partial class PCStoreDBContext : DbContext
 
             entity.HasIndex(e => e.CategoryId, "CategoryId_idx");
 
-            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.Name).HasMaxLength(45);
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
@@ -150,7 +150,7 @@ public partial class PCStoreDBContext : DbContext
 
             entity.HasIndex(e => e.ProductId, "ProductId_idx");
 
-            entity.Property(e => e.Url).HasMaxLength(45);
+            entity.Property(e => e.Url).HasMaxLength(100);
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductImages)
                 .HasForeignKey(d => d.ProductId)

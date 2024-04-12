@@ -1,0 +1,72 @@
+@model PCStore.ViewModels.ProductsViewModel
+
+@{
+    ViewData["Title"] = "Catalog";
+}
+
+<head>
+    <title>@ViewData["Title"] - PCStore</title>
+</head>
+
+<div class="product-container">
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-category">
+                <div class="category-top">
+                    <h2 class="category-title">Category</h2>
+                </div>
+                
+                <ul class="sidebar-menu-category-list">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li class="sidebar-menu-category">
+                            <a href="@Url.Action("Index", "Catalog", new { categoryId = category.Id })" class="menu-name">
+                                <p class="category-name">@category.Name</p>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        
+        <div class="products">
+            <div class="product-grid">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="showcase">
+                        <div class="showcase-banner">
+                            <a href="@Url.Action("Details", "Product", new { id = product.Id })">
+                                <img src="@product.ProductImages.FirstOrDefault()?.Url" alt="@product.Name" width="200" height="200" class="product-img default">
+                                <img src="@product.ProductImages.FirstOrDefault()?.Url" alt="@product.Name" class="product-img hover">
+                            </a>
+                            <div class="showcase-actions">
+                                <button class="btn-action">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </button>
+                                <button class="btn-action">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </button>
+                                <button class="btn-action">
+                                    <ion-icon name="repeat-outline"></ion-icon>
+                                </button>
+                                <button class="btn-action">
+                                    <ion-icon name="bag-add-outline"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="showcase-content">
+                            <a href="@Url.Action("Details", "Product", new { id = product.Id })">
+                                <h3 class="showcase-title">@product.Name</h3>
+                            </a>
+                            <div class="price-box">
+                                <p class="price">$@product.Price</p>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
