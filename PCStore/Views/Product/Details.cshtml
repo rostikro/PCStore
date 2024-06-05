@@ -1,0 +1,46 @@
+@model PCStore.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container">
+    <div class="product-wrapper">
+        <div class="product-images">
+            <div class="img-showcase">
+                <img class="img-main" width="400" height="400" />
+                <div class="img-select">
+                    @foreach (var image in Model.ProductImages)
+                    {
+                        <img class="img-small" src="@image.Url" width="100" height="100" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="product-content">
+            <h3 class="product-name">@Model.Name</h3>
+            <br/>
+            <p class="product-desc">@Model.Description</p>
+            <br/>
+            <p class="fw-bold">Характеристики</p>
+            <table class="product-specs">
+                @foreach (var spec in Model.SpecsOptions)
+                {
+                    <tr class="spec">
+                        <td class="spec-name col-3">@spec.Spec?.Name</td>
+                        <td class="spec-val col-8">@spec.Value</td>
+                    </tr>
+                }
+            </table>
+            <br/>
+            <div class="row">
+            <div class="price-box">
+                <p class="price">Ціна: $@Model.Price</p>
+            </div>
+            <a class="btn add-cart-btn" asp-action="AddProduct" asp-controller="Cart" asp-route-id="@Model.Id">Додати до кошика</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/select-img.js" asp-append-version="true"></script>
