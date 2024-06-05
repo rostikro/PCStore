@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    </PropertyGroup>
+      <UserSecretsId>2892fce8-10cb-4418-9f48-3da3b2864972</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
@@ -14,7 +15,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="ClosedXML" Version="0.104.0-preview2" />
+      <PackageReference Include="MailKit" Version="4.5.0" />
       <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.2" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.4" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
@@ -27,8 +32,9 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.1" />
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
+      <PackageReference Include="SendGrid" Version="9.29.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -121,6 +127,9 @@
 
     <ItemGroup>
       <None Include="wwwroot\js\select-img.js" />
+      <None Update="Templates\receipt_template.docx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,38 @@
+﻿@model PCStore.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Логін";
+}
+
+<div class="wrapper">
+    <div class="form-box login">
+        <h2>Логін</h2>
+        <div asp-validation-summary="ModelOnly"></div>
+        <form asp-action="Login">
+            <div class="input-box">
+                <span asp-validation-for="Email"></span>
+                <span class="icon">
+                    <ion-icon name="mail"></ion-icon>
+                </span>
+                <input asp-for="Email" type="email">
+                <label>Пошта</label>
+            </div>
+            <div class="input-box">
+                <span asp-validation-for="Password"></span>
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input asp-for="Password" type="password">
+                <label>Пароль</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input asp-for="SaveCookies" type="checkbox">Запам'ятати мене?</label>
+                <a asp-action="ForgotPassword">Забули пароль?</a>
+            </div>
+            <button type="submit" class="btn">Залогінитись</button>
+            <div class="login-register">
+                <p>Не маєте акаунта? <a asp-action="Register" class="register-link">Зареєструватись</a></p>
+            </div>
+        </form>
+    </div>
+</div>

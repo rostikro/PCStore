@@ -1,0 +1,110 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@{
+    ViewData["Title"] = "Адмін панель";
+}
+
+<a class="btn admin-btn" asp-controller="Product" asp-action="Index">Товари</a>
+<a class="btn admin-btn" asp-controller="Category" asp-action="Index">Категорії</a>
+<a class="btn admin-btn" asp-controller="Order" asp-action="Index">Замовлення</a>
+@if (User.IsInRole("Admin"))
+{
+    <a class="btn admin-btn" asp-controller="User" asp-action="EmployeesList">Менеджери</a>
+}
+
+<div class="row">
+    <div class="col-6">
+        <div id="salesStatsChart"></div>
+    </div>
+    <div class="col-6">
+        <div id="incomingStatsChart"></div>
+    </div>
+</div>
+
+<div class="row">
+
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <div id="categoriesSalesStats"></div>
+    </div>
+</div>
+
+@section Scripts
+{
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawSalesChart);
+  google.charts.setOnLoadCallback(drawIncomingChart);
+  google.charts.setOnLoadCallback(drawCategoriesSalesChart);
+  function drawSalesChart() {
+   fetch('/api/charts/salesStats')
+   .then(response => response.json())
+   .then(data => {
+    const dataTable = new
+        google.visualization.DataTable();
+         dataTable.addColumn('string', 'Дата');
+         dataTable.addColumn('number', 'Кількість продажів');
+         data.forEach(item => {
+         dataTable.addRow([item.date,
+        item.count]);
+         });
+     const options = {
+     title: 'Кількість продажів',
+     width: 600,
+     height: 400,
+     legend: { position: 'none' },
+     };
+     const chart = new
+     google.visualization.ColumnChart(document.getElementById('salesStatsChart'));
+     chart.draw(dataTable, options);
+     });
+     }
+     function drawIncomingChart() {
+        fetch('/api/charts/incomingStats')
+        .then(response => response.json())
+        .then(data => {
+         const dataTable = new
+             google.visualization.DataTable();
+              dataTable.addColumn('string', 'Дата');
+              dataTable.addColumn('number', 'Дохід');
+              data.forEach(item => {
+              dataTable.addRow([item.date, item.incoming]);
+              });
+          const options = {
+          title: 'Дохід',
+          width: 600,
+          height: 400,
+          legend: { position: 'none' },
+          };
+          const chart = new
+          google.visualization.ColumnChart(document.getElementById('incomingStatsChart'));
+          chart.draw(dataTable, options);
+          });
+          }
+          function drawCategoriesSalesChart() {
+              fetch('/api/charts/categoriesSalesStats')
+              .then(response => response.json())
+              .then(data => {
+               const dataTable = new
+                   google.visualization.DataTable();
+                    dataTable.addColumn('string', 'Категорія');
+                    dataTable.addColumn('number', 'Кількість продажів');
+                    data.forEach(item => {
+                    dataTable.addRow([item.category, item.count]);
+                    });
+                const options = {
+                title: 'Продажі по категоріям',
+                width: 600,
+                height: 400,
+                legend: { position: 'none' },
+                };
+                const chart = new
+                google.visualization.ColumnChart(document.getElementById('categoriesSalesStats'));
+                chart.draw(dataTable, options);
+                });
+            }
+ </script>
+}

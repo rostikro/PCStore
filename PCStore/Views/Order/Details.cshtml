@@ -1,0 +1,55 @@
+﻿@model PCStore.Models.Order;
+
+@{
+    ViewData["Title"] = "Замовлення #" + Model.Id;
+}
+
+<div class="card">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Замовлення #@Model.Id</b></h4></div>
+                        </div>
+                    </div>    
+                    @foreach (var product in Model.OrderProducts)
+                    {
+                        <div class="row border-top border-bottom">
+                            <div class="row main align-items-center">
+                                <div class="col-2"><img class="img-fluid" src="@product.Product.ProductImages.FirstOrDefault().Url"></div>
+                                <div class="col">
+                                    <div class="row">@product.Product.Name</div>
+                                </div>
+                                <div class="col">
+                                    <a class="border">@product.Quantity</a>
+                                </div>
+                                <div class="col">&dollar; @product.Product.Price</div>
+                            </div>
+                        </div>
+                    }
+                    <div class="back-to-shop"><a asp-action="Index" asp-controller="Order">&leftarrow; <span class="text-muted">Повернутись до замовлень</span></a></div>
+                </div>
+                <div class="col-md-4 summary">
+                    @{
+                        var addressId = 0;
+                    }
+                    <div><h5><b>Підсумок</b></h5></div>
+                    <hr>
+                    <h5>Доставка</h5>
+                    <div class="address-container">
+                        @{
+                            var address = Model.ShippingInfos.FirstOrDefault();
+                        }
+                        <p style="margin: 0;">@address.Street @address.Apartment,</p>
+                        <p style="margin: 0;">@address.City,</p>
+                        <p style="margin: 0;">@address.Province область, @address.PostCode,</p>
+                        <p style="margin: 0;">@address.Country</p>
+                    </div>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); margin-top: 2vh; padding: 2vh 0;">
+                        <div class="col">Ціна</div>
+                        <div class="col text-right">&dollar; @Model.Total</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>

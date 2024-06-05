@@ -1,8 +1,23 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "Крутий сайтік";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="landing-page">
+<div class="header">
+    <div class="row">
+        <div class="col-2">
+            <h1>
+                Збери комп'ютер своєї мрії!
+            </h1>
+            <p>
+                Давно хочеш, щоб всі ігри йшли в 4K 60 FPS? Тоді швидше заходь до каталогу та збери собі комп'ютерного монстра!!!
+            </p>
+            <a asp-action="Index" asp-controller="Catalog" rel="noopener noreferrer" class="btn">Перейти до каталогу →</a>
+        </div>
+        <div class="col-2">
+            <img src="https://atlas-content-cdn.pixelsquid.com/assets_v2/206/2068298573568546085/jpeg-600/G03.jpg?modifiedAt=1" alt="" />
+        </div>
+    </div>
+</div>
 </div>

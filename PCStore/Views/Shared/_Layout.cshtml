@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -35,23 +40,34 @@
             <div class="header-search-container">
                 @using (Html.BeginForm("SearchProduct", "Catalog", FormMethod.Post))
                 {
-                    <input type="search" name="product_name" class="search-field" value="@ViewBag.SearchBarValue" placeholder="Enter the product name...">
+                    <input type="search" name="product_name" class="search-field" value="@ViewBag.SearchBarValue" placeholder="Що ви шукаєте?">
                     <button class="search-btn">
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
                 }
             </div>
             <div class="header-user-actions">
-                <a class="action-btn" asp-area="" asp-controller="Product" asp-action="Index">
-                    <ion-icon name="stats-chart-outline"></ion-icon>
-                </a>
-                <a class="action-btn">
+                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                {
+                    <a class="action-btn" asp-area="" asp-controller="AdminPanel" asp-action="Index">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                    </a>
+                }
+                <a class="action-btn" asp-controller="Cart" asp-action="Index">
                     <ion-icon name="bag-handle-outline"></ion-icon>
-                    <span class="count">0</span>
                 </a>
-                <a class="action-btn">
-                    <ion-icon name="person-outline"></ion-icon>
-                </a>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a class="action-btn" asp-area="" asp-controller="Cabinet" asp-action="PersonalInformation">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </a>
+                }
+                else
+                {
+                    <a class="action-btn" asp-area="" asp-controller="User" asp-action="Login">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </a>
+                }
             </div>
         </div>
     </div>
@@ -64,7 +80,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2024 - PCStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2024 - PCStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Політика конфідеційності</a>
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

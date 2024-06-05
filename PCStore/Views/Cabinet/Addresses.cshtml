@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PCStore.Models.Address>
+
+@{
+    ViewData["Title"] = "Адреси";
+}
+
+<div class="account-page">
+    <div class="container">
+        <div class="col-sm-3">
+            <h2>Мій акаунт</h2>
+            <ul>
+                <li>
+                    <a asp-action="PersonalInformation">Основна інформація</a>
+                </li>
+                <li class="active">
+                    <a asp-action="Addresses">Адреси</a>
+                </li>
+                <li>
+                    <a asp-action="Orders">Замовлення</a>
+                </li>
+                <li>
+                    <a asp-action="Logout" asp-controller="User" class="link-danger">Вийти з акаунта</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <h2>Адреси</h2>
+            <div class="address-grid">
+                @foreach (var (address, i) in Model.Select((value, i) => ( value, i )))
+                {
+                    <div class="address-container">
+                        <div >
+                            <h3>Адреса @(i+1)</h3>
+                            <p>@address.Street @address.Apartment,</p>
+                            <p>@address.City,</p>
+                            <p>@address.Province область, @address.PostCode,</p>
+                            <p>@address.Country</p>
+                        </div>
+                        <div>
+                            <a class="btn-action" asp-action="EditAddress" asp-route-id="@address.Id">Змінити</a>
+                            <a class="btn-action" asp-action="DeleteAddress" asp-route-id="@address.Id">Видалити</a>
+                        </div>
+                    </div>
+                }
+                <div class="address-container add-new-address-container">
+                    <a class="add-new-address-btn" asp-action="AddAddress">
+                        <ion-icon class="plus-icon" name="add-outline"></ion-icon>
+                        Додати нову
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

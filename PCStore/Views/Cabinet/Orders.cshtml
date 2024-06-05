@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PCStore.Models.Order>;
+
+@{
+    ViewData["Title"] = "Замовлення";
+}
+
+<div class="account-page">
+    <div class="container">
+        <div class="col-sm-3">
+            <h2>Мій акаунт</h2>
+            <ul>
+                <li>
+                    <a asp-action="PersonalInformation">Основна інформація</a>
+                </li>
+                <li>
+                    <a asp-action="Addresses">Адреси</a>
+                </li>
+                <li class="active">
+                    <a asp-action="Orders">Замовлення</a>
+                </li>
+                <li>
+                    <a asp-action="Logout" asp-controller="User" class="link-danger">Вийти з акаунта</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <h2>Замовлення</h2>
+            @foreach (var order in Model)
+            {
+                <div>
+                    
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PCStore.Models;
 
 namespace PCStore.Context;
 
-public partial class PCStoreDBContext : DbContext
+public partial class PCStoreDBContext : IdentityDbContext<User>
 {
     public PCStoreDBContext(DbContextOptions<PCStoreDBContext> options)
         : base(options)
@@ -36,10 +37,10 @@ public partial class PCStoreDBContext : DbContext
 
     public virtual DbSet<SpecsOption> SpecsOptions { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+        
         modelBuilder
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
@@ -185,7 +186,7 @@ public partial class PCStoreDBContext : DbContext
 
             entity.ToTable("shopping_carts");
 
-            entity.HasIndex(e => e.UserId, "UserId1_idx");
+            entity.HasIndex(e => e.UserId, "UserId1_idx1");
 
             entity.HasOne(d => d.User).WithMany(p => p.ShoppingCarts)
                 .HasForeignKey(d => d.UserId)
@@ -201,7 +202,7 @@ public partial class PCStoreDBContext : DbContext
 
             entity.HasIndex(e => e.CartId, "CartId_idx");
 
-            entity.HasIndex(e => e.ProdcutId, "ProductId1_idx");
+            entity.HasIndex(e => e.ProdcutId, "ProductId1_idx1");
 
             entity.HasOne(d => d.Cart).WithMany(p => p.ShoppingCartProducts)
                 .HasForeignKey(d => d.CartId)
@@ -220,7 +221,7 @@ public partial class PCStoreDBContext : DbContext
 
             entity.ToTable("specs");
 
-            entity.HasIndex(e => e.CategoryId, "CategoryId_idx");
+            entity.HasIndex(e => e.CategoryId, "CategoryId_idx1");
 
             entity.Property(e => e.Name).HasMaxLength(45);
 
@@ -236,7 +237,7 @@ public partial class PCStoreDBContext : DbContext
 
             entity.ToTable("specs_options");
 
-            entity.HasIndex(e => e.ProductId, "ProductId1_idx");
+            entity.HasIndex(e => e.ProductId, "ProductId1_idx2");
 
             entity.HasIndex(e => e.SpecId, "SpecId_idx");
 
@@ -251,20 +252,6 @@ public partial class PCStoreDBContext : DbContext
                 .HasForeignKey(d => d.SpecId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("SpecId");
-        });
-
-        modelBuilder.Entity<User>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("users");
-
-            entity.Property(e => e.Email).HasMaxLength(45);
-            entity.Property(e => e.FirstName).HasMaxLength(45);
-            entity.Property(e => e.LastName).HasMaxLength(45);
-            entity.Property(e => e.Password).HasMaxLength(45);
-            entity.Property(e => e.PhoneNumber).HasMaxLength(45);
-            entity.Property(e => e.Username).HasMaxLength(45);
         });
 
         OnModelCreatingPartial(modelBuilder);
